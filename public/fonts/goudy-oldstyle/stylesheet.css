@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'Goudy Oldstyle Std';
+    src: url('GoudyStd.eot');
+    src: local('Goudy Oldstyle Std Regular'), local('GoudyStd'),
+        url('GoudyStd.eot?#iefix') format('embedded-opentype'),
+        url('GoudyStd.woff2') format('woff2'),
+        url('GoudyStd.woff') format('woff'),
+        url('GoudyStd.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Goudy Oldstyle Std';
+    src: url('GoudyStd-BoldItalic.eot');
+    src: local('Goudy Oldstyle Std Bold Italic'), local('GoudyStd-BoldItalic'),
+        url('GoudyStd-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('GoudyStd-BoldItalic.woff2') format('woff2'),
+        url('GoudyStd-BoldItalic.woff') format('woff'),
+        url('GoudyStd-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Goudy Oldstyle Std';
+    src: url('GoudyStd-Bold.eot');
+    src: local('Goudy Oldstyle Std Bold'), local('GoudyStd-Bold'),
+        url('GoudyStd-Bold.eot?#iefix') format('embedded-opentype'),
+        url('GoudyStd-Bold.woff2') format('woff2'),
+        url('GoudyStd-Bold.woff') format('woff'),
+        url('GoudyStd-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Goudy Oldstyle Std';
+    src: url('GoudyStd-Italic.eot');
+    src: local('Goudy Oldstyle Std Italic'), local('GoudyStd-Italic'),
+        url('GoudyStd-Italic.eot?#iefix') format('embedded-opentype'),
+        url('GoudyStd-Italic.woff2') format('woff2'),
+        url('GoudyStd-Italic.woff') format('woff'),
+        url('GoudyStd-Italic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
