@@ -1,15 +1,11 @@
-import { useSelector } from "react-redux";
-import { RootState } from "./redux/store";
+import { Outlet } from "react-router";
 
-function App() {
-  const cars = useSelector((store: RootState) => store.cars)
-
+const App = () => {
 	return (
-    <div>
-      <h1 className="text-7xl font-bold">Hello world!</h1>
-      <p className="text-6xl font-bold">{cars[0].name}</p>
-    </div>
+		<div className="h-screen">
+			<Outlet />
+		</div>
 	);
-}
+};
 
 export default App;
