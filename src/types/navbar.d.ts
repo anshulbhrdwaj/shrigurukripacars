@@ -16,4 +16,5 @@ export interface INavLinkProps {
 	data: INavItem;
 	isActive: boolean;
 	setSelectedIndicator: (href: string) => void;
+	onClick: () => void;
 }

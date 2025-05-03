@@ -1,6 +1,6 @@
 import { navbarItems } from "@/data";
 import { useLocation, Link } from "react-router";
-import { useState, ReactNode } from "react";
+import { useState, ReactNode, SetStateAction, Dispatch } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { menuSlide, scale, slide } from "@/lib/Header/anim";
 import { IHamburgerProps, INavLinkProps } from "@/types";
@@ -36,7 +36,7 @@ const Header = () => {
 			</div>
 			<AnimatePresence>
 				{isActive && (
-					<Nav>
+					<Nav setIsActive={setIsActive}>
 						<HamburgerMenu isActive={isActive} setIsActive={setIsActive} />
 					</Nav>
 				)}
@@ -81,14 +81,20 @@ const HamburgerMenu = ({ isActive, setIsActive }: IHamburgerProps) => {
 	);
 };
 
-const Nav = ({ children }: { children: ReactNode }) => {
+const Nav = ({
+	children,
+	setIsActive,
+}: {
+	children: ReactNode;
+	setIsActive: Dispatch<SetStateAction<boolean>>;
+}) => {
 	const location = useLocation();
 	const pathname = location.pathname;
 	const [selectedIndicator, setSelectedIndicator] = useState(pathname);
 
 	return (
 		<motion.nav
-			className="h-screen w-full fixed z-50 right-0 top-0 text-foreground backdrop-blur-3xl bg-background/70 "
+			className="h-[100dvh] w-full fixed z-50 right-0 top-0 text-foreground backdrop-blur-3xl bg-background/70 "
 			variants={menuSlide}
 			initial="initial"
 			animate="enter"
@@ -111,6 +117,7 @@ const Nav = ({ children }: { children: ReactNode }) => {
 							data={navItem}
 							isActive={selectedIndicator === navItem.link}
 							setSelectedIndicator={setSelectedIndicator}
+							onClick={() => setIsActive(false)}
 						/>
 					))}
 				</div>
@@ -127,7 +134,12 @@ const Nav = ({ children }: { children: ReactNode }) => {
 	);
 };
 
-const NavLink = ({ data, isActive, setSelectedIndicator }: INavLinkProps) => {
+const NavLink = ({
+	data,
+	isActive,
+	setSelectedIndicator,
+	onClick,
+}: INavLinkProps) => {
 	const { name: title, link, id } = data;
 
 	return (
@@ -139,6 +151,7 @@ const NavLink = ({ data, isActive, setSelectedIndicator }: INavLinkProps) => {
 			initial="initial"
 			animate="enter"
 			exit="exit"
+			onClick={() => onClick()}
 		>
 			<motion.div
 				variants={scale}
