@@ -34,10 +34,10 @@ export default Home;
 const Hero = () => {
 	const dispatch = useDispatch();
 	return (
-		<section className={cn(section, "gap-0 sm:gap-0 xl:gap-0 items-center pt-12 ")}>
-			<h1 className={cn(heading, "text-nowrap mx-auto")}>CLASSIC CARS</h1>
+		<section className={cn(section, "gap-0 sm:gap-0 xl:gap-0 items-center pt-12 justify-center")}>
+			<h1 className={cn(heading, "text-nowrap")}>CLASSIC CARS</h1>
 
-			<div className=" w-[90vw] xl:w-[95vw] h-[60vh] relative rounded-[2rem]  md:rounded-[4rem] grainy bg-foreground mx-auto">
+			<div className=" w-[90vw] xl:w-[95vw] h-[60vh] relative rounded-[2rem]  md:rounded-[4rem] grainy bg-foreground">
 				<div className="absolute bottom-0 right-0 w-[70%] sm:w-[60%] lg:w-[50%] h-[15%] bg-background rounded-tl-[2rem] md:hidden"></div>
 				{/* <CutoutCard /> */}
 
