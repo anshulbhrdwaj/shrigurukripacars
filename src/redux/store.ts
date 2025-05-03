@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import carsReducer from "./slices/carsSlice";
 import themeReducer from "./slices/themeSlice";
+import testimonialsReducer from "./slices/testimonialsSlice";
 
 const store = configureStore({
 	reducer: {
 		theme: themeReducer,
 		cars: carsReducer,
+		testimonials: testimonialsReducer,
 	},
 });
 

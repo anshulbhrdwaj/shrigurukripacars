@@ -128,20 +128,26 @@
 /* Default styling */
 @layer base {
 	* {
-		@apply border-border outline-ring/50;
+		@apply border-border outline-ring/50 transition-all duration-1000;
 	}
 	body {
-		@apply bg-background text-foreground;
+		@apply bg-background text-foreground font-georgia;
+		/* @apply bg-background text-foreground font-georgia bg-[url('/noise.svg')] bg-repeat;  */
 	}
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		@apply font-recoleta;
-	}
-	p {
-		@apply font-georgia;
-	}
+}
+
+/* .grainy {
+		@apply bg-[url('/noise.svg')] bg-repeat;
+	} */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@apply font-recoleta;
+}
+.p-width {
+	@apply px-[3vw];
 }
