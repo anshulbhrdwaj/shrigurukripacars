@@ -39,7 +39,7 @@ export const AnimatedTestimonials = ({
   };
 
   return (
-    <div className="mx-auto px-4 py-20 antialiased w-full p-width">
+    <div className="mx-auto px-4 antialiased w-full p-width">
       <div className="relative grid grid-cols-1 gap-20 md:grid-cols-2">
         <div>
           <div className="relative h-80 w-full">

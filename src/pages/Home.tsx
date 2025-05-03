@@ -1,7 +1,6 @@
 import { MoveRight } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { toggleTheme } from "@/redux/slices/themeSlice";
-import CutoutCard from "@/components/CutoutCard";
 import { Button, CtaButton } from "@/components/ui/button";
 import { Link } from "react-router";
 // import Review from "@/components/Review";
@@ -19,7 +18,7 @@ import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 
 const Home = () => {
 	return (
-		<main className="flex flex-col gap-16 xl:gap-32 2xl:gap-8 overflow-x-hidden">
+		<main className="flex flex-col space-y-32 overflow-x-hidden">
 			<Hero />
 			<Explore />
 			<Gallery />
@@ -35,15 +34,15 @@ export default Home;
 const Hero = () => {
 	const dispatch = useDispatch();
 	return (
-		<section className={cn(section, "gap-0 sm:gap-0 xl:gap-0")}>
-			<h1 className={cn(heading, "text-nowrap")}>CLASSIC CARS</h1>
+		<section className={cn(section, "gap-0 sm:gap-0 xl:gap-0 items-center pt-12 ")}>
+			<h1 className={cn(heading, "text-nowrap mx-auto")}>CLASSIC CARS</h1>
 
-			<div className=" w-[90vw] xl:w-[95vw] h-[60vh] relative rounded-[2rem]  md:rounded-[4rem] grainy">
-				{/* <div className="absolute bottom-0 right-0 w-[44vw] lg:w-[43.5vw] xl:w-[22vw] h-[10vh] md:h-[12vh] xl:h-[11vh] bg-background rounded-tl-[2rem] md:rounded-tl-[4rem]"></div> */}
-				<CutoutCard />
+			<div className=" w-[90vw] xl:w-[95vw] h-[60vh] relative rounded-[2rem]  md:rounded-[4rem] grainy bg-foreground mx-auto">
+				<div className="absolute bottom-0 right-0 w-[70%] sm:w-[60%] lg:w-[50%] h-[15%] bg-background rounded-tl-[2rem] md:hidden"></div>
+				{/* <CutoutCard /> */}
 
 				<Button
-					className={cn(primaryBtn, "absolute bottom-0 right-0 z-10")}
+					className={cn(primaryBtn, "absolute box-border md:rounded-l-[4rem] md:rounded-tr-[4rem] md:box-content -bottom-1 -right-1 z-10 max-h-1/10 w-[62%] md:w-[55%] lg:w-4/10 md:border-[3vh] md:border-background")}
 					onClick={() => dispatch(toggleTheme())}
 				>
 					<MoveRight size={48} />
@@ -117,7 +116,7 @@ const Gallery = () => {
 
 const About = () => {
 	return (
-		<section className={cn(section, "py-18 h-screen")}>
+		<section className={cn(section, "")}>
 			<h1 className={cn(heading3)}>Shri Gurukripa Cars</h1>
 
 			<div className=" w-[95vw] h-full sm:h-[60vh] relative rounded-[2rem] md:rounded-[4rem] grainy bg-foreground p-8 gap-8 lg:gap-12 xl:p-16 flex flex-col justify-between sm:flex-row">
