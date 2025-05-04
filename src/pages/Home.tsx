@@ -39,7 +39,7 @@ const Hero = () => {
 
 			<div className=" w-[90vw] xl:w-[95vw] h-[60vh] relative rounded-[2rem]  md:rounded-[4rem] grainy bg-foreground">
 				<div className="absolute bottom-0 right-0 w-[70%] sm:w-[60%] lg:w-[50%] h-[15%] bg-background rounded-tl-[2rem] md:hidden"></div>
-				{/* <CutoutCard /> */}
+
 
 				<Button
 					className={cn(primaryBtn, "absolute box-border md:rounded-l-[4rem] md:rounded-tr-[4rem] md:box-content -bottom-1 -right-1 z-10 max-h-1/10 w-[62%] md:w-[55%] lg:w-4/10 md:border-[3vh] md:border-background")}
@@ -90,8 +90,8 @@ const Explore = () => {
 
 const Gallery = () => {
 	return (
-		<section className={cn(section)}>
-			<div className="flex flex-col sm:flex-row items-start xl:items-center justify-center min-h-[30vh] gap-8 ">
+		<section className={cn(section, "")}>
+			<div className="flex flex-col sm:flex-row items-start xl:items-center justify-center min-h-[30dvh] gap-8 ">
 				<div className="min-w-full sm:min-w-[50vw] lg:min-w-[40vw] xl:min-w-[20vw] bg-foreground h-[42vh] md:h-[40vh] lg:h-[32vh] rounded-[2rem] sm:rounded-[4rem] mt-4 xl:-mt-10 order-2 sm:order-1"></div>
 				<div className="flex flex-col xl:flex-row items-center h-[30vh] gap-2 xl:gap-0 2xl:gap-4 order-1 sm:order-2 pt-0">
 					<h1 className={cn(heading2, "xl:text-center")}>BEST CARS</h1>
@@ -103,7 +103,7 @@ const Gallery = () => {
 					</p>
 				</div>
 			</div>
-			<div className="flex flex-col sm:flex-row items-center min-h-[50vh] max-w-screen justify-between gap-12 sm:gap-0">
+			<div className="flex flex-col sm:flex-row items-center min-h-[50dvh] max-w-screen justify-between gap-12 sm:gap-0">
 				<div className="min-h-[50vh] w-full sm:w-3/5 bg-foreground rounded-[2rem] sm:rounded-[4rem]"></div>
 				<div className="flex flex-col-reverse sm:flex-col items-start h-[50vh] w-full sm:w-1/3 justify-between ">
 					<CtaButton />

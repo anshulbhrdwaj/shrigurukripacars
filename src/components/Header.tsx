@@ -23,7 +23,7 @@ const Header = () => {
 			</div>
 			<Link
 				to="/contact-us"
-				className="hidden xl:flex justify-self-end text-primary-foreground bg-primary py-3 px-6 items-center justify-center rounded-[1.25rem]"
+				className="hidden xl:flex justify-self-end text-primary-foreground bg-primary py-3 px-6 items-center justify-center rounded-[1.25rem] "
 			>
 				Book a Call
 			</Link>
