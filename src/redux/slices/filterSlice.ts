@@ -1,52 +1,6 @@
+import { defaultFilters } from "@/data";
+import { IFilters } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-interface FilterState {
-	search: string;
-	brand: string;
-	model: string;
-	fuelType: string[];
-	transmission: string[];
-	carType: string[];
-	color: string[];
-	location: string;
-	minPrice: number;
-	maxPrice: number;
-	minKmDriven: number;
-	maxKmDriven: number;
-	minYear: number;
-	maxYear: number;
-	owner: number | null;
-	isVerifiedOnly: boolean;
-	isNegotiableOnly: boolean;
-	sortBy:
-		| "priceLowHigh"
-		| "priceHighLow"
-		| "newest"
-		| "oldest"
-		| "kmLowHigh"
-		| "kmHighLow";
-}
-
-const initialState: FilterState = {
-	search: "",
-	brand: "",
-	model: "",
-	fuelType: [],
-	transmission: [],
-	carType: [],
-	color: [],
-	location: "",
-	minPrice: 0,
-	maxPrice: 100000000,
-	minKmDriven: 0,
-	maxKmDriven: 300000,
-	minYear: 2000,
-	maxYear: new Date().getFullYear(),
-	owner: null,
-	isVerifiedOnly: false,
-	isNegotiableOnly: false,
-	sortBy: "newest",
-};
 
 const toggleItem = (array: string[], value: string): string[] => {
 	return array.includes(value)
@@ -56,7 +10,7 @@ const toggleItem = (array: string[], value: string): string[] => {
 
 const filterSlice = createSlice({
 	name: "filters",
-	initialState,
+	initialState: defaultFilters,
 	reducers: {
 		setSearch: (state, action: PayloadAction<string>) => {
 			state.search = action.payload;
@@ -109,10 +63,10 @@ const filterSlice = createSlice({
 		toggleIsNegotiableOnly: (state) => {
 			state.isNegotiableOnly = !state.isNegotiableOnly;
 		},
-		setSortBy: (state, action: PayloadAction<FilterState["sortBy"]>) => {
+		setSortBy: (state, action: PayloadAction<IFilters["sortBy"]>) => {
 			state.sortBy = action.payload;
 		},
-		resetFilters: () => initialState,
+		resetFilters: () => defaultFilters,
 	},
 });
 

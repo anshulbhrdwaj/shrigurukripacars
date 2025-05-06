@@ -9,13 +9,14 @@ import {
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { cardBtn, primaryBtn, section } from "@/lib/classes";
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MoveRight, Search } from "lucide-react";
+import { MoveRight, Search, SlidersHorizontal } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import SortBy from "@/components/SortBy";
+import { useFilteredCars } from "@/hooks/useFilteredCars";
+import { useDispatch } from "react-redux";
+import { setSearch } from "@/redux/slices/filterSlice";
 // import SortBy from "@/components/SortBy";
 
 const Collection = () => {
@@ -42,7 +43,8 @@ const Collection = () => {
 		},
 	];
 	const [open, setOpen] = useState(false);
-	const cars = useSelector((store: RootState) => store.cars);
+	const cars = useFilteredCars();
+	const dispatch = useDispatch();
 
 	return (
 		<section
@@ -87,11 +89,13 @@ const Collection = () => {
 						<Input
 							placeholder="Search"
 							className="h-full w-full pl-12 pr-4 bg-foreground placeholder:text-muted-background text-background rounded-2xl"
+							type="search"
+							onChange={(e) => dispatch(setSearch(e.target.value))}
 						/>
 						<Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted w-5 h-5" />
 					</div>
 
-					<SortBy	/>
+					<SortBy />
 				</div>
 
 				<div className="bg-foregroun w-full flex-1 rounded-3xl overflow-hidden md:overflow-y-scroll grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 p-0">
@@ -123,28 +127,28 @@ export default Collection;
 
 export const Logo = () => {
 	return (
-		<a
-			href="#"
-			className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-background"
-		>
-			<div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-background" />
+		<a className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-background">
+			<SlidersHorizontal
+				color="var(--background)"
+				className="text-background h-5 w-6 shrink-0"
+			/>
 			<motion.span
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
 				className="font-medium whitespace-pre text-background"
 			>
-				Acet Labs
+				Filters
 			</motion.span>
 		</a>
 	);
 };
 export const LogoIcon = () => {
 	return (
-		<a
-			href="#"
-			className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-background"
-		>
-			<div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-background" />
+		<a className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-background">
+			<SlidersHorizontal
+				color="var(--background)"
+				className="text-background h-5 w-6 shrink-0"
+			/>
 		</a>
 	);
 };

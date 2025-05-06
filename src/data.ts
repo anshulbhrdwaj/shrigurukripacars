@@ -1,4 +1,4 @@
-import { ICar } from "./types";
+import { ICar, IFilters } from "./types";
 
 export const navbarItems = [
 	{
@@ -293,3 +293,24 @@ export const listedCars: ICar[] = [
     isNegotiable: true,
   },
 ];
+
+export const defaultFilters: IFilters = {
+	search: "",
+	brand: "",
+	model: "",
+	fuelType: [],
+	transmission: [],
+	carType: [],
+	color: [],
+	location: "",
+	minPrice: 0,
+	maxPrice: 100000000,
+	minKmDriven: 0,
+	maxKmDriven: 300000,
+	minYear: 2000,
+	maxYear: new Date().getFullYear(),
+	owner: null,
+	isVerifiedOnly: false,
+	isNegotiableOnly: false,
+	sortBy: "newest",
+};

@@ -5,7 +5,7 @@ export const primaryBtn =
 	"w-full sm:w-[22vw] lg:w-[25vw] 2xl:w-[28vw] flex items-center justify-center rounded-[1.25rem] md:rounded-[4rem]";
 
 export const cardBtn = 
-	"absolute box-border h-[5dvh] sm:h-[3dvh] py-6 px-12 sm:py-3 sm:px-6 rounded-full md:box-content -bottom-1 -right-1 z-10 max-h-1/10 w-[62%] md:w-[55%] lg:w-4/10 border-[3vh] border-background"
+	"absolute box-border h-[5dvh] sm:h-[3dvh] py-6 px-12 sm:py-3 sm:px-6 rounded-full md:box-content -bottom-1 -right-1 z-10 max-h-1/10 w-[62%] md:w-[55%] lg:w-4/10 border-[3vh] border-background shadow-none"
 
 export const heading =
 	"2xl:text-[16rem] xl:text-[11rem] lg:text-[8rem] sm:text-[6rem] text-[3.4rem] xl:leading-[16rem] sm:leading-[8rem] leading-[4rem] font-bold p-0 m-0";
