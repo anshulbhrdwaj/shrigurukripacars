@@ -8,7 +8,7 @@ import { IHamburgerProps, INavLinkProps } from "@/types";
 const Header = () => {
 	const [isActive, setIsActive] = useState<boolean>(false);
 	return (
-		<header className="w-full h-[6rem] items-center justify-around p-width grid grid-cols-3 border-b border-foreground/50 text-nowrap">
+		<header className="w-full h-[5rem] lg:h-[6rem] items-center justify-around p-width grid grid-cols-3 border-b border-foreground/50 text-nowrap">
 			<nav className="hidden sm:flex items-center justify-start text-lg">
 				<ul className="hidden xl:flex items-center justify-center gap-8">
 					{navbarItems.map((item) => (
@@ -23,7 +23,7 @@ const Header = () => {
 			</div>
 			<Link
 				to="/contact-us"
-				className="hidden xl:flex justify-self-end text-primary-foreground bg-primary py-3 px-6 items-center justify-center rounded-[1.25rem] "
+				className="hidden xl:flex justify-self-end text-primary-foreground bg-primary py-3 px-6 items-center justify-center rounded-[1.25rem] text-base"
 			>
 				Book a Call
 			</Link>

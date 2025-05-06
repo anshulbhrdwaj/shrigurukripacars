@@ -7,7 +7,7 @@ import { MoveRight } from "lucide-react";
 import { primaryBtn } from "@/lib/classes";
 
 const buttonVariants = cva(
-	"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+	"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none",
 	{
 		variants: {
 			variant: {
@@ -16,7 +16,7 @@ const buttonVariants = cva(
 				destructive:
 					"bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
 				outline:
-					"border bg-transparent shadow-xs hover:bg-accent text-primary hover:bg-primmary hover:text-background border-primary hover:bg-primary/50",
+					"border bg-transparent shadow-xs hover:bg-accent text-primary hover:bg-primary hover:text-background border-primary hover:bg-primary/50",
 				secondary:
 					"bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
 				ghost:
@@ -68,7 +68,7 @@ export const CtaButton = ({ text = "Explore Cars" }: { text?: string }) => {
 				<div className="w-6 h-[4rem] sm:w-4 sm:h-[3rem] rounded-sm bg-primary " />
 				<div className="w-6 h-[3rem] sm:w-4 sm:h-[2rem] rounded-sm bg-primary " />
 			</div>
-			<Button className={cn(primaryBtn, "text-base lg:text-lg")} variant={"outline"}>
+			<Button className={cn(primaryBtn, "text-base lg:text-lg h-[8dvh] sm:h-[6vh] py-6 px-12 sm:py-3 sm:px-6")} variant={"outline"}>
 				{text} <MoveRight size={48} />
 			</Button>
 		</div>

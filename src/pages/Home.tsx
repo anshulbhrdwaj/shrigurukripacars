@@ -13,8 +13,10 @@ import {
 	section,
 	heading,
 	heading2,
+	cardBtn,
 } from "@/lib/classes";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
+import { Card, CardContent } from "@/components/ui/card";
 
 const Home = () => {
 	return (
@@ -34,20 +36,24 @@ export default Home;
 const Hero = () => {
 	const dispatch = useDispatch();
 	return (
-		<section className={cn(section, "gap-0 sm:gap-0 xl:gap-0 items-center pt-12 justify-center")}>
+		<section
+			className={cn(
+				section,
+				"gap-0 sm:gap-0 xl:gap-0 items-center pt-8 justify-center"
+			)}
+		>
 			<h1 className={cn(heading, "text-nowrap")}>CLASSIC CARS</h1>
 
-			<div className=" w-[90vw] xl:w-[95vw] h-[60vh] relative rounded-[2rem]  md:rounded-[4rem] grainy bg-foreground">
-				<div className="absolute bottom-0 right-0 w-[70%] sm:w-[60%] lg:w-[50%] h-[15%] bg-background rounded-tl-[2rem] md:hidden"></div>
-
-
-				<Button
-					className={cn(primaryBtn, "absolute box-border md:rounded-l-[4rem] md:rounded-tr-[4rem] md:box-content -bottom-1 -right-1 z-10 max-h-1/10 w-[62%] md:w-[55%] lg:w-4/10 md:border-[3vh] md:border-background")}
-					onClick={() => dispatch(toggleTheme())}
-				>
-					<MoveRight size={48} />
-				</Button>
-			</div>
+			<Card className=" w-[90vw] xl:w-[95vw] h-[60vh] relative rounded-[2rem] rounded-br-[4rem]  md:rounded-[4rem] grainy bg-foreground border-none shadow-none">
+				<CardContent>
+					<Button
+						className={cn(primaryBtn, cardBtn, "h-[5dvh] sm:h-[3dvh] py-6 px-12 sm:py-3 sm:px-6 rounded-full")}
+						onClick={() => dispatch(toggleTheme())}
+					>
+						<MoveRight size={48} />
+					</Button>
+				</CardContent>
+			</Card>
 		</section>
 	);
 };
@@ -166,7 +172,7 @@ const CtaSection = () => {
 		>
 			<div className={cn(heading, "font-recoleta text-background")}>
 				Elegance and Affordability meet
-				<Button className={cn(primaryBtn, "rounded-full")}>
+				<Button className={cn(primaryBtn, "rounded-full h-[8dvh] sm:h-[6vh] py-6 px-12 sm:py-3 sm:px-6")}>
 					<MoveRight size={48} />
 				</Button>
 			</div>

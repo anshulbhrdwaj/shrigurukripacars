@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 
 const App = () => {
 	return (
-		<div className="h-screen text-lg">
+		<div className="min-h-screen sm:h-screen text-lg">
 			<Header />
 			<Outlet />
 			<Footer />

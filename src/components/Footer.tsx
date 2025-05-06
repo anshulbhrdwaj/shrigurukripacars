@@ -8,7 +8,7 @@ const Footer = () => {
 				<Link to="/terms-and-conditions">Terms and Conditions</Link>
 				<Link to="/privacy-policy">Privacy Policy</Link>
 			</div>
-			<div className="flex flex-col text-center sm:flex-row justify-center">
+			<div className="flex flex-col text-center sm:flex-row justify-center sm:gap-2">
 				Copyright &copy; {new Date().getFullYear()}{" "}
 				<span className="text-nowrap">Shri Gurukripa Cars</span>
 			</div>

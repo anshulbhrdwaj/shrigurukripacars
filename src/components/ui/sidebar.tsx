@@ -103,8 +103,8 @@ export const DesktopSidebar = ({
 			</motion.div>
 			<div
 				className={cn(
-					"top-[9dvh] left-[260px] cursor-pointer z-20 text-background absolute lg:hidden",
-					open ? "opacity-100" : "opacity-0"
+					"top-[4.5dvh] left-[280px] cursor-pointer z-20 text-background absolute max-sm:hidden lg:hidden transition-all duration-500 ease-in-out",
+					open ? "opacity-100 delay-1000" : "opacity-0"
 				)}
 				onClick={() => setOpen(false)}
 			>
@@ -128,7 +128,7 @@ export const MobileSidebar = ({
 				)}
 				{...props}
 			>
-				<div className="flex justify-start z-20 pt-4 px-[4vw] items-center">
+				<div className="flex justify-start z-20 px-[4vw] items-center">
 					{/* <span className="text-primary mr-2">Apply Filters</span> */}
 					<SlidersHorizontal
 						color="var(--primary)"

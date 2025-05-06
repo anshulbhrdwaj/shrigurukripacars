@@ -8,6 +8,15 @@ import {
 } from "@tabler/icons-react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import { cardBtn, primaryBtn, section } from "@/lib/classes";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { MoveRight, Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import SortBy from "@/components/SortBy";
+// import SortBy from "@/components/SortBy";
 
 const Collection = () => {
 	const links = [
@@ -33,16 +42,17 @@ const Collection = () => {
 		},
 	];
 	const [open, setOpen] = useState(false);
+	const cars = useSelector((store: RootState) => store.cars);
 
 	return (
-		<div
+		<section
 			className={cn(
-				"mx-auto flex w-full flex-1 flex-col overflow-hidden bg-background ml-0 md:ml-[3vw] relative",
-				"h-[85dvh]" // for your use case, use `h-screen` instead of `h-[60vh]`
+				section,
+				"h-[85%] sm:flex-row py-[2.6dvh] gap-10 sm:gap-8 xl:gap-12 relative sm:pt-12"
 			)}
 		>
 			<Sidebar open={open} setOpen={setOpen}>
-				<SidebarBody className="justify-between gap-10 rounded-lg bg-foreground/95  text-background h-[70dvh] my-auto w-[90%] mx-auto sm:w-full sm:mx-0">
+				<SidebarBody className="justify-between gap-10 rounded-lg bg-foreground/95 w-full text-background my-auto">
 					<div className="flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
 						{open ? <Logo /> : <LogoIcon />}
 						<div className="mt-8 flex flex-col gap-2">
@@ -70,7 +80,42 @@ const Collection = () => {
 					</div>
 				</SidebarBody>
 			</Sidebar>
-		</div>
+
+			<div className="flex flex-col items-center justify-start w-full h-full gap-4 sm:gap-6 xl:gap-8 ">
+				<div className="bg-foregroun w-[70%] md:w-full h-16 rounded-3xl max-sm:absolute max-sm:top-4 max-sm:right-4 flex justify-between items-center">
+					<div className="w-full md:w-6/10 lg:w-5/10 xl:w-3/10 h-full relative ">
+						<Input
+							placeholder="Search"
+							className="h-full w-full pl-12 pr-4 bg-foreground placeholder:text-muted-background text-background rounded-2xl"
+						/>
+						<Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted w-5 h-5" />
+					</div>
+
+					<SortBy	/>
+				</div>
+
+				<div className="bg-foregroun w-full flex-1 rounded-3xl overflow-hidden md:overflow-y-scroll grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 p-0">
+					{cars.map((car) => (
+						<Card
+							key={car.id}
+							className=" bg-foreground h-[50dvh] rounded-3xl min-w-[25dvw] border-none relative"
+						>
+							<CardContent>
+								<Button
+									className={cn(
+										primaryBtn,
+										cardBtn,
+										"border-[2vh] rounded-br-2xl md:rounded-br-2xl h-1/10 w-5/10 lg:w-4/10 2xl:w-3/10"
+									)}
+								>
+									<MoveRight size={8} />
+								</Button>
+							</CardContent>
+						</Card>
+					))}
+				</div>
+			</div>
+		</section>
 	);
 };
 
