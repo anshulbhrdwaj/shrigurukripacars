@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import React, { useState, createContext, useContext } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { IconX } from "@tabler/icons-react";
-import { SlidersHorizontal } from "lucide-react";
+import { Funnel } from "lucide-react";
 
 interface Links {
 	label: string;
@@ -103,7 +103,7 @@ export const DesktopSidebar = ({
 			</motion.div>
 			<div
 				className={cn(
-					"top-[4.5dvh] left-[280px] cursor-pointer z-20 text-background absolute max-sm:hidden lg:hidden transition-all duration-500 ease-in-out",
+					"top-[6.5dvh] left-[280px] cursor-pointer z-20 text-background absolute max-sm:hidden lg:hidden transition-all duration-500 ease-in-out",
 					open ? "opacity-100 delay-1000" : "opacity-0"
 				)}
 				onClick={() => setOpen(false)}
@@ -128,11 +128,10 @@ export const MobileSidebar = ({
 				)}
 				{...props}
 			>
-				<div className="flex justify-start z-20 px-[4vw] items-center">
-					{/* <span className="text-primary mr-2">Apply Filters</span> */}
-					<SlidersHorizontal
+				<div className="flex justify-start z-20 px-[4vw] items-center transition-all duration-500 ease-in-out">
+					<Funnel
 						color="var(--primary)"
-						className="text-background"
+						className={`text-background ${open ? "opacity-0" : "opacity-100"}`}
 						onClick={() => setOpen(!open)}
 					/>
 				</div>

@@ -9,21 +9,42 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import {
-	ArrowDownWideNarrow,
-	ArrowUpNarrowWide,
-} from "lucide-react";
+import { ArrowDownWideNarrow, ArrowUpNarrowWide } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { setSortBy } from "@/redux/slices/filterSlice";
 
 const sortOptions = [
-	{ label: "Price", value: "priceLowHigh", icon: <ArrowUpNarrowWide className="w-4 h-4" /> },
-	{ label: "Price", value: "priceHighLow", icon: <ArrowDownWideNarrow className="w-4 h-4" /> },
-	{ label: "KM", value: "kmLowHigh", icon: <ArrowUpNarrowWide className="w-4 h-4" /> },
-	{ label: "KM", value: "kmHighLow", icon: <ArrowDownWideNarrow className="w-4 h-4" /> },
-	{ label: "Newest", value: "newest", icon: <ArrowUpNarrowWide className="w-4 h-4" /> },
-	{ label: "Oldest", value: "oldest", icon: <ArrowUpNarrowWide className="w-4 h-4" /> },
+	{
+		label: "Price",
+		value: "priceLowHigh",
+		icon: <ArrowUpNarrowWide className="w-4 h-4" />,
+	},
+	{
+		label: "Price",
+		value: "priceHighLow",
+		icon: <ArrowDownWideNarrow className="w-4 h-4" />,
+	},
+	{
+		label: "KM",
+		value: "kmLowHigh",
+		icon: <ArrowUpNarrowWide className="w-4 h-4" />,
+	},
+	{
+		label: "KM",
+		value: "kmHighLow",
+		icon: <ArrowDownWideNarrow className="w-4 h-4" />,
+	},
+	{
+		label: "Newest",
+		value: "newest",
+		icon: <ArrowUpNarrowWide className="w-4 h-4" />,
+	},
+	{
+		label: "Oldest",
+		value: "oldest",
+		icon: <ArrowUpNarrowWide className="w-4 h-4" />,
+	},
 ];
 
 const getSortLabel = (sortKey: string) =>
@@ -46,8 +67,9 @@ export default function SortBy({ className }: { className?: string }) {
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<Button
+					variant={"outline"}
 					className={cn(
-						"hidden sm:flex md:w-3/10 lg:w-2/10 xl:w-1/10 h-full bg-foreground rounded-2xl border-none text-background/80 hover:bg-foreground/80 duration-100",
+						"hidden sm:flex md:w-48 h-full rounded-2xl border-foreground text-foreground hover:bg-foreground/10 hover:text-foreground duration-100",
 						className
 					)}
 				>
@@ -57,7 +79,7 @@ export default function SortBy({ className }: { className?: string }) {
 			<DropdownMenuContent
 				side="bottom"
 				style={{ transformOrigin: "top center" }}
-				className="bg-foreground text-background/80 border-none"
+				className="bg-background text-foreground/80 border-foreground/80"
 			>
 				<DropdownMenuLabel className="text-center">Sort by</DropdownMenuLabel>
 				<DropdownMenuSeparator className="bg-muted/50" />
