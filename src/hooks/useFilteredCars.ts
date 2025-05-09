@@ -1,10 +1,11 @@
 import { useSelector } from "react-redux";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { RootState } from "../redux/store";
 
 export const useFilteredCars = () => {
 	const cars = useSelector((state: RootState) => state.cars);
 	const filters = useSelector((state: RootState) => state.filters);
+	useEffect(() => console.log(filters), [filters])
 
 	const filteredCars = useMemo(() => {
 		const {
