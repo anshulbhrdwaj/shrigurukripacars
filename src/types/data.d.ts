@@ -70,7 +70,7 @@ interface IFilters {
 	maxKmDriven: number;
 	minYear: number;
 	maxYear: number;
-	owner: number | null;
+	owner: number ;
 	isVerifiedOnly: boolean;
 	isNegotiableOnly: boolean;
   sortBy: sortBy;

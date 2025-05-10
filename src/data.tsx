@@ -338,7 +338,7 @@ export const defaultFilters: IFilters = {
 	maxKmDriven: 300000,
 	minYear: 2000,
 	maxYear: new Date().getFullYear(),
-	owner: null,
+	owner: 6,
 	isVerifiedOnly: false,
 	isNegotiableOnly: false,
 	sortBy: "newest",

@@ -19,9 +19,10 @@ import {
 	setTransmission,
 } from "@/redux/slices/filterSlice";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ICar } from "@/types";
 import { Input } from "./ui/input";
+import { RootState } from "@/redux/store";
 
 const fuelTypes = ["Petrol", "Diesel", "Electric", "CNG", "Hybrid"];
 const transmissionTypes = ["Manual", "Automatic"];
@@ -29,20 +30,29 @@ const ownershipOptions = ["1", "2", "3", "4", "5"];
 
 const FiltersSidebar = ({ cars }: { cars: ICar[] }) => {
 	const [open, setOpen] = useState(false);
+	const {
+		fuelType,
+		transmission,
+		owner: ownerFilter,
+		minPrice,
+		maxPrice,
+		minKmDriven,
+		maxKmDriven,
+	} = useSelector((state: RootState) => state.filters);
 	const dispatch = useDispatch();
 
 	const prices = cars.map((car) => car.price);
 	const kmDriven = cars.map((car) => car.kmDriven);
 
-	const [minPrice, setMinPriceValue] = useState(Math.min(...prices));
-	const [maxPrice, setMaxPriceValue] = useState(Math.max(...prices));
+	const [minPriceValue, setMinPriceValue] = useState(Math.min(...prices));
+	const [maxPriceValue, setMaxPriceValue] = useState(Math.max(...prices));
 	const [minKm, setMinKmValue] = useState(Math.min(...kmDriven));
 	const [maxKm, setMaxKmValue] = useState(Math.max(...kmDriven));
 
 	useEffect(() => {
-		dispatch(setMinPrice(minPrice));
-		dispatch(setMaxPrice(maxPrice));
-	}, [minPrice, maxPrice, dispatch]);
+		dispatch(setMinPrice(minPriceValue));
+		dispatch(setMaxPrice(maxPriceValue));
+	}, [minPriceValue, maxPriceValue, dispatch]);
 
 	useEffect(() => {
 		dispatch(setMinKmDriven(minKm));
@@ -78,6 +88,37 @@ const FiltersSidebar = ({ cars }: { cars: ICar[] }) => {
 		</div>
 	);
 
+	const renderToggleGroup = (
+		options: string[],
+		selected: string[] | string,
+		onSelect: (value: string) => void,
+		type: "multiple" | "single"
+	) => (
+		<ToggleGroup type={type} variant="outline" className="ml-8 flex-wrap gap-4">
+			{options.map((option) => {
+				const isSelected = Array.isArray(selected)
+					? selected.includes(option)
+					: selected === option ||
+					  (Number(selected) !== 6 && Number(option) <= Number(selected));
+
+				return (
+					<ToggleGroupItem
+						key={option}
+						value={option}
+						aria-label={option}
+						aria-pressed={isSelected}
+						className={`px-6 py-3 rounded-full border-primary text-xs cursor-pointer ${
+							isSelected ? "bg-primary text-background" : ""
+						}`}
+						onClick={() => onSelect(option)}
+					>
+						{option}
+					</ToggleGroupItem>
+				);
+			})}
+		</ToggleGroup>
+	);
+
 	return (
 		<Sidebar open={open} setOpen={setOpen}>
 			<SidebarBody className="bg-foreground/95 text-background rounded-lg w-full gap-10 z-50">
@@ -88,45 +129,23 @@ const FiltersSidebar = ({ cars }: { cars: ICar[] }) => {
 						{renderFilterGroup(
 							<Fuel className="h-5 w-5 text-background" />,
 							"Fuel Type",
-							<ToggleGroup
-								type="multiple"
-								variant="outline"
-								className="ml-8 flex-wrap gap-4"
-							>
-								{fuelTypes.map((type) => (
-									<ToggleGroupItem
-										key={type}
-										value={type}
-										aria-label={type}
-										className="px-6 py-3 rounded-full border-primary text-xs cursor-pointer"
-										onClick={() => dispatch(setFuelType(type))}
-									>
-										{type}
-									</ToggleGroupItem>
-								))}
-							</ToggleGroup>
+							renderToggleGroup(
+								fuelTypes,
+								fuelType,
+								(val) => dispatch(setFuelType(val)),
+								"multiple"
+							)
 						)}
 
 						{renderFilterGroup(
 							<Cog className="h-5 w-5 text-background" />,
 							"Transmission",
-							<ToggleGroup
-								type="multiple"
-								variant="outline"
-								className="ml-8 flex-wrap gap-4"
-							>
-								{transmissionTypes.map((type) => (
-									<ToggleGroupItem
-										key={type}
-										value={type}
-										aria-label={type}
-										className="px-6 py-3 rounded-full border-primary text-xs cursor-pointer"
-										onClick={() => dispatch(setTransmission(type))}
-									>
-										{type}
-									</ToggleGroupItem>
-								))}
-							</ToggleGroup>
+							renderToggleGroup(
+								transmissionTypes,
+								transmission,
+								(val) => dispatch(setTransmission(val)),
+								"multiple"
+							)
 						)}
 
 						{renderFilterGroup(
@@ -157,7 +176,7 @@ const FiltersSidebar = ({ cars }: { cars: ICar[] }) => {
 							<div className="flex items-center gap-2 pl-8">
 								<Input
 									type="number"
-									value={minKm}
+									value={minKmDriven}
 									onChange={(e) => setMinKmValue(Number(e.target.value))}
 									placeholder="Min"
 									className="w-1/2 rounded-full border-primary"
@@ -165,7 +184,7 @@ const FiltersSidebar = ({ cars }: { cars: ICar[] }) => {
 								-
 								<Input
 									type="number"
-									value={maxKm}
+									value={maxKmDriven}
 									onChange={(e) => setMaxKmValue(Number(e.target.value))}
 									placeholder="Max"
 									className="w-1/2 rounded-full border-primary"
@@ -176,23 +195,12 @@ const FiltersSidebar = ({ cars }: { cars: ICar[] }) => {
 						{renderFilterGroup(
 							<UserRound className="h-5 w-5 text-background" />,
 							"Previous Owners",
-							<ToggleGroup
-								type="single"
-								variant="outline"
-								className="ml-8 flex-wrap gap-2"
-							>
-								{ownershipOptions.map((owner) => (
-									<ToggleGroupItem
-										key={owner}
-										value={owner}
-										aria-label={owner}
-										className="p-4 rounded-full border-primary text-xs cursor-pointer"
-										onClick={() => dispatch(setOwner(Number(owner)))}
-									>
-										{owner}
-									</ToggleGroupItem>
-								))}
-							</ToggleGroup>
+							renderToggleGroup(
+								ownershipOptions,
+								ownerFilter.toString(),
+								(val) => dispatch(setOwner(Number(val))),
+								"single"
+							)
 						)}
 					</div>
 				</div>

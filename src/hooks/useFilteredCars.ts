@@ -5,7 +5,7 @@ import { RootState } from "../redux/store";
 export const useFilteredCars = () => {
 	const cars = useSelector((state: RootState) => state.cars);
 	const filters = useSelector((state: RootState) => state.filters);
-	useEffect(() => console.log(filters), [filters])
+	useEffect(() => console.log(filters), [filters]);
 
 	const filteredCars = useMemo(() => {
 		const {
@@ -33,19 +33,24 @@ export const useFilteredCars = () => {
 
 		const result = cars
 			.filter((car) => {
-				if (normalizedSearch && !car.name.toLowerCase().includes(normalizedSearch)) {
+				if (
+					normalizedSearch &&
+					!car.name.toLowerCase().includes(normalizedSearch)
+				) {
 					return false;
 				}
 				if (brand && car.brand !== brand) return false;
 				if (model && car.model !== model) return false;
 				if (carType.length && !carType.includes(car.carType)) return false;
 				if (fuelType.length && !fuelType.includes(car.fuelType)) return false;
-				if (transmission.length && !transmission.includes(car.transmission)) return false;
+				if (transmission.length && !transmission.includes(car.transmission))
+					return false;
 				if (color.length && !color.includes(car.color)) return false;
 				if (location && car.location !== location) return false;
 				if (owner !== null && car.owner > owner) return false;
 				if (car.price < minPrice || car.price > maxPrice) return false;
-				if (car.kmDriven < minKmDriven || car.kmDriven > maxKmDriven) return false;
+				if (car.kmDriven < minKmDriven || car.kmDriven > maxKmDriven)
+					return false;
 				if (car.year < minYear || car.year > maxYear) return false;
 				if (isVerifiedOnly && !car.isVeriified) return false;
 				if (isNegotiableOnly && !car.isNegotiable) return false;
