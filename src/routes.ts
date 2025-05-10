@@ -5,7 +5,7 @@ import App from "./App";
 import Collection from "./pages/Collection";
 import Services from "./pages/Services";
 import AboutUs from "./pages/AboutUs";
-import CarDetails from "./pages/CarDetails";
+import CarDetails from "./components/CarDetails";
 import SellYourCar from "./pages/SellYourCar";
 import Finance from "./pages/Finance";
 

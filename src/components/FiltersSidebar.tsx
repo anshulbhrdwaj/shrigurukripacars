@@ -69,7 +69,12 @@ const FiltersSidebar = ({ cars }: { cars: ICar[] }) => {
 				{icon}
 				{open && (
 					<motion.span
-						animate={{ opacity: open ? 1 : 0 }}
+						initial={{ opacity: 0, display: "none" }}
+						animate={{
+							opacity: open ? 1 : 0,
+							display: open ? "block" : "none",
+						}}
+						transition={{ duration: 1, delay: 0.8 }}
 						className="text-background text-sm transition duration-150"
 					>
 						{label}
@@ -78,8 +83,9 @@ const FiltersSidebar = ({ cars }: { cars: ICar[] }) => {
 			</div>
 			{open && (
 				<motion.div
-					animate={{ opacity: 1 }}
-					transition={{ duration: 1 }}
+					initial={{ opacity: 0, display: "none" }}
+					animate={{ opacity: 1, display: "block" }}
+					transition={{ duration: 1, delay: 0.8 }}
 					className="w-full"
 				>
 					{content}
@@ -123,7 +129,7 @@ const FiltersSidebar = ({ cars }: { cars: ICar[] }) => {
 		<Sidebar open={open} setOpen={setOpen}>
 			<SidebarBody className="bg-foreground/95 text-background rounded-lg w-full gap-10 z-50">
 				<div className="flex flex-1 flex-col overflow-auto">
-					{open ? <Logo /> : <LogoIcon />}
+					{open ? <Logo open /> : <LogoIcon />}
 
 					<div className="mt-8 flex flex-col gap-4">
 						{renderFilterGroup(
@@ -226,12 +232,16 @@ const FiltersSidebar = ({ cars }: { cars: ICar[] }) => {
 
 export default FiltersSidebar;
 
-export const Logo = () => (
+export const Logo = ({ open }: { open: boolean }) => (
 	<a className="flex items-center space-x-2 py-1 text-sm text-background">
 		<Funnel className="h-5 w-6 text-background" />
 		<motion.span
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
+			initial={{ opacity: 0, display: "none" }}
+			animate={{
+				opacity: open ? 1 : 0,
+				display: open ? "block" : "none",
+			}}
+			transition={{ duration: 1, delay: 1 }}
 			className="font-medium"
 		>
 			Filters
