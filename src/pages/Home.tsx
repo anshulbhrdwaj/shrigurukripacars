@@ -15,7 +15,7 @@ import {
 	heading2,
 	cardBtn,
 } from "@/lib/classes";
-import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
+import AnimatedTestimonials from "@/components/ui/animated-testimonials";
 import { Card, CardContent } from "@/components/ui/card";
 
 const Home = () => {
@@ -97,7 +97,7 @@ const Explore = () => {
 const Gallery = () => {
 	return (
 		<section className={cn(section, "")}>
-			<div className="flex flex-col sm:flex-row items-start xl:items-center justify-center min-h-[30dvh] gap-8 ">
+			<div className="flex flex-col sm:flex-row items-start xl:items-center justify-center min-h-[50dvh] gap-8 ">
 				<div className="min-w-full sm:min-w-[50vw] lg:min-w-[40vw] xl:min-w-[20vw] bg-foreground h-[42vh] md:h-[40vh] lg:h-[32vh] rounded-[2rem] sm:rounded-[4rem] mt-4 xl:-mt-10 order-2 sm:order-1"></div>
 				<div className="flex flex-col xl:flex-row items-center h-[30vh] gap-2 xl:gap-0 2xl:gap-4 order-1 sm:order-2 pt-0">
 					<h1 className={cn(heading2, "xl:text-center")}>BEST CARS</h1>

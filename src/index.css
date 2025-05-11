@@ -5,66 +5,71 @@
 @import "tw-animate-css";
 
 @layer utilities {
-  @keyframes slide-in-from-top {
-    0% {
-      transform: translateY(-0.5rem);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
+	@keyframes slide-in-from-top {
+		0% {
+			transform: translateY(-0.5rem);
+			opacity: 0;
+		}
+		100% {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
 
-  @keyframes slide-in-from-bottom {
-    0% {
-      transform: translateY(0.5rem);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
+	@keyframes slide-in-from-bottom {
+		0% {
+			transform: translateY(0.5rem);
+			opacity: 0;
+		}
+		100% {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
 
-  .animate-slide-in-from-top-2 {
-    animation: slide-in-from-top 0.2s ease-out;
-  }
+	.animate-slide-in-from-top-2 {
+		animation: slide-in-from-top 0.2s ease-out;
+	}
 
-  .animate-slide-in-from-bottom-2 {
-    animation: slide-in-from-bottom 0.2s ease-out;
-  }
+	.animate-slide-in-from-bottom-2 {
+		animation: slide-in-from-bottom 0.2s ease-out;
+	}
 
-  /* Add left and right if needed */
-  @keyframes slide-in-from-left {
-    0% {
-      transform: translateX(-0.5rem);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
+	/* Add left and right if needed */
+	@keyframes slide-in-from-left {
+		0% {
+			transform: translateX(-0.5rem);
+			opacity: 0;
+		}
+		100% {
+			transform: translateX(0);
+			opacity: 1;
+		}
+	}
 
-  @keyframes slide-in-from-right {
-    0% {
-      transform: translateX(0.5rem);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
+	@keyframes slide-in-from-right {
+		0% {
+			transform: translateX(0.5rem);
+			opacity: 0;
+		}
+		100% {
+			transform: translateX(0);
+			opacity: 1;
+		}
+	}
 
-  .animate-slide-in-from-left-2 {
-    animation: slide-in-from-left 0.2s ease-out;
-  }
+	.animate-slide-in-from-left-2 {
+		animation: slide-in-from-left 0.2s ease-out;
+	}
 
-  .animate-slide-in-from-right-2 {
-    animation: slide-in-from-right 0.2s ease-out;
-  }
+	.animate-slide-in-from-right-2 {
+		animation: slide-in-from-right 0.2s ease-out;
+	}
+
+	.content-auto {
+		content-visibility: auto;
+		contain-intrinsic-size: 1000px; /* avoid layout shift */
+	}
 }
 
 @custom-variant dark (&:is(.dark *));
@@ -152,8 +157,7 @@
 	--sidebar-ring: #e96c0a;
 
 	--radix-dropdown-menu-content-transform-origin: top center;
---radix-dropdown-menu-content-available-height: 200px; /* or something */
-
+	--radix-dropdown-menu-content-available-height: 200px; /* or something */
 }
 
 /* Dark mode overrides */
@@ -190,7 +194,6 @@
 	--sidebar-accent-foreground: #f0ede3;
 	--sidebar-border: #5b5b5b;
 	--sidebar-ring: #e96c0a;
-	
 }
 
 /* Default styling */
@@ -221,10 +224,10 @@ h6 {
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+	* {
+		@apply border-border outline-ring/50;
 	}
-  body {
-    @apply bg-background text-foreground;
+	body {
+		@apply bg-background text-foreground;
 	}
 }

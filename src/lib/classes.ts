@@ -1,5 +1,5 @@
 export const section =
-	"flex flex-col gap-12 sm:gap-16 xl:gap-24 min-h-[60vh] w-full p-width";
+	"flex flex-col gap-12 sm:gap-16 xl:gap-24 min-h-[60vh] w-full p-width content-auto";
 
 export const primaryBtn =
 	"w-full sm:w-[22vw] lg:w-[25vw] 2xl:w-[28vw] flex items-center justify-center rounded-[1.25rem] md:rounded-[4rem]";

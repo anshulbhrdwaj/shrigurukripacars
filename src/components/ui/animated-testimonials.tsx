@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 
 import { useCallback, useEffect, useState } from "react";
 
-export const AnimatedTestimonials = ({
+const AnimatedTestimonials = ({
   testimonials,
   autoplay = false,
 }: {
@@ -159,3 +159,5 @@ export const AnimatedTestimonials = ({
     </div>
   );
 };
+
+export default AnimatedTestimonials;
