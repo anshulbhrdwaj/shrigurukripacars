@@ -54,7 +54,7 @@ const filterSlice = createSlice({
 		setMaxYear: (state, action: PayloadAction<number>) => {
 			state.maxYear = action.payload;
 		},
-		setOwner: (state, action: PayloadAction<number | null>) => {
+		setOwner: (state, action: PayloadAction<number>) => {
 			state.owner = action.payload;
 		},
 		toggleIsVerifiedOnly: (state) => {
