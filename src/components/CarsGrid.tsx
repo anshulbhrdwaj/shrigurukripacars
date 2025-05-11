@@ -1,10 +1,3 @@
-import {
-	Carousel,
-	CarouselContent,
-	CarouselItem,
-	CarouselNext,
-	CarouselPrevious,
-} from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { Cog, Fuel, Navigation, UserRound } from "lucide-react";
 import { ICar } from "@/types";
@@ -19,21 +12,11 @@ const CarsGrid = ({ cars }: { cars: ICar[] }) => {
 					className=" bg-foreground h-[60dvh] md:h-[55dvh] rounded-3xl min-w-[24dvw] border-none relative font-recoleta p-4 pb-3"
 				>
 					<CardContent className="h-full flex flex-col p-0">
-						<Carousel className="w-full p-0">
-							<CarouselContent className="w-full h-full m-0">
-								{car.media.map((media, idx) => (
-									<CarouselItem key={idx} className="w-full h-full p-0">
-										<img
-											src={media}
-											className="w-full h-[28vmax] md:h-[28dvh] m-0 rounded-2xl object-cover"
-											alt={car.name}
-										/>
-									</CarouselItem>
-								))}
-							</CarouselContent>
-							<CarouselPrevious className="left-2" />
-							<CarouselNext className="right-2" />
-						</Carousel>
+						<img
+							src={car.thumbnail}
+							alt={car.name}
+							className="w-full h-[28vmax] md:h-[28dvh] m-0 rounded-2xl object-cover"
+						/>
 
 						<div className="flex flex-col justify-between h-full px-4 xl:px-4 pb-1 md:pb-2 pt-4">
 							<div className="flex flex-col gap-1">

@@ -1,3 +1,5 @@
+"use client";
+
 import {
 	Calendar,
 	CheckCheck,
@@ -11,7 +13,7 @@ import {
 	UserRound,
 } from "lucide-react";
 import { ResponsiveContainer } from "recharts";
-
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
 	Drawer,
@@ -35,100 +37,157 @@ import {
 } from "./ui/carousel";
 
 export default function CarDetails({ car }: { car: ICar }) {
+	const [mediaViewerOpen, setMediaViewerOpen] = useState(false);
+	const [selectedMedia, setSelectedMedia] = useState("");
+	const [selectedIsVideo, setSelectedIsVideo] = useState(false);
+
+	const openMediaViewer = (media: string) => {
+		setSelectedMedia(media);
+		setSelectedIsVideo(/\.(mp4|webm|ogg)$/i.test(media));
+		setMediaViewerOpen(true);
+	};
+
 	return (
-		<Drawer>
-			<DrawerTrigger asChild>
-				<Button
-					className={cn(
-						primaryBtn,
-						cardBtn,
-						"border-[1vh] xl:border-[1.5vh] rounded-br-2xl md:rounded-br-2xl h-1/10 w-5/10 md:w-4/10 lg:w-3/10 2xl:w-3/10"
-					)}
-				>
-					<MoveRight size={8} />
-				</Button>
-			</DrawerTrigger>
-			<DrawerContent>
-				<div className="mx-auto w-full max-w-sm md:max-w-[80%] lg:max-w-screen-md font-recoleta text-xl">
-					<DrawerHeader>
-						<DrawerTitle>{car.name}</DrawerTitle>
-						<DrawerDescription>{car.description}</DrawerDescription>
-						<div className="p-4 pb-0">
-							<ResponsiveContainer width="100%" height="100%">
-								<Carousel className="w-full p-0">
-									<CarouselContent className="w-full h-full m-0">
-										{car.media.map((media, idx) => (
-											<CarouselItem key={idx} className="w-full h-full p-0">
-												<img
-													src={media}
-													className="w-full h-[28vmax] md:h-[28dvh] m-0 rounded-2xl object-cover"
-													alt={car.name}
-												/>
-											</CarouselItem>
-										))}
-									</CarouselContent>
-									<CarouselPrevious className="" />
-									<CarouselNext className="" />
-								</Carousel>
-							</ResponsiveContainer>
-						</div>
-						<DrawerDescription>
-							<div className="flex flex-col gap-4 mt-4">
-								<p className="text-sm text-foreground/60 w-full flex flex-col items-start gap-1">
-									<span className="flex items-start gap-4">
-										<span className="flex items-center gap-2">
-											<Fuel size={14} className="mb-1" /> {car.fuelType}
-										</span>
-										<span className="flex items-center gap-2">
-											<UserRound size={14} className="mb-1" /> {car.owner}
-										</span>
-									</span>
-									<span className="flex items-start gap-4">
-										<span className="flex items-center gap-2">
-											<Cog size={14} /> {car.transmission}
-										</span>
-										<span className="flex items-center gap-2">
-											<Navigation size={14} /> {car.kmDriven} Km
-										</span>
-									</span>
-									<span className="flex items-start gap-4">
-										<span className="flex items-center gap-2">
-											<Calendar size={14} /> {car.year}
-										</span>
-										<span className="flex items-center gap-2">
-											<MapPin size={14} /> {car.location}
-										</span>
-									</span>
-									<span className="flex items-start gap-4">
-										<span className="flex items-center gap-2">
-											<FileDigit size={14} /> {car.registrationNo}
-										</span>
-										<span className="flex items-center gap-2">
-											<ShieldCheck size={14} /> Insurance {car.insurance}
-										</span>
-									</span>
-									<span className="flex items-start gap-4">
-										{car.features?.map((feature) => (
-											<span key={feature} className="flex items-center gap-2">
-											<CheckCheck size={14} /> {feature}
-										</span>
-										))}
-									</span>
-								</p>
-								<p className="text-xl md:text-3xl font-bold text-primary flex items-center">
-									₹ {car.price}
-								</p>
+		<>
+			<Drawer>
+				<DrawerTrigger asChild>
+					<Button
+						className={cn(
+							primaryBtn,
+							cardBtn,
+							"border-[1vh] xl:border-[1.5vh] rounded-br-2xl md:rounded-br-2xl h-1/10 w-5/10 md:w-4/10 lg:w-3/10 2xl:w-3/10"
+						)}
+					>
+						<MoveRight size={8} />
+					</Button>
+				</DrawerTrigger>
+
+				<DrawerContent>
+					<div className="mx-auto w-full max-w-sm md:max-w-[80%] lg:max-w-screen-md font-recoleta text-xl">
+						<DrawerHeader>
+							<DrawerTitle>{car.name}</DrawerTitle>
+							<DrawerDescription>{car.description}</DrawerDescription>
+
+							<div className="p-4 pb-0">
+								<ResponsiveContainer width="100%" height="100%">
+									<Carousel className="w-full p-0">
+										<CarouselContent className="w-full h-full m-0">
+											{car.media.map((media, idx) => {
+												const isVideo = /\.(mp4|webm|ogg)$/i.test(media);
+
+												return (
+													<CarouselItem
+														key={idx}
+														className="w-full h-full p-0 cursor-pointer"
+														onClick={() => openMediaViewer(media)}
+													>
+														{isVideo ? (
+															<video
+																src={media}
+																className="w-full h-[28vmax] md:h-[28dvh] m-0 rounded-2xl object-cover"
+															/>
+														) : (
+															<img
+																src={media}
+																alt={car.name}
+																className="w-full h-[28vmax] md:h-[28dvh] m-0 rounded-2xl object-cover"
+															/>
+														)}
+													</CarouselItem>
+												);
+											})}
+										</CarouselContent>
+										<CarouselPrevious />
+										<CarouselNext />
+									</Carousel>
+								</ResponsiveContainer>
 							</div>
-						</DrawerDescription>
-					</DrawerHeader>
-					<DrawerFooter>
-						<Button>Book Now</Button>
-						<DrawerClose asChild>
-							<Button variant="outline">Cancel</Button>
-						</DrawerClose>
-					</DrawerFooter>
-				</div>
-			</DrawerContent>
-		</Drawer>
+
+							<DrawerDescription>
+								<div className="flex flex-col gap-4 mt-4 text-sm text-foreground/60">
+									<div className="flex flex-wrap gap-2 md:gap-4">
+										<Detail icon={<Fuel size={14} />} text={car.fuelType} />
+										<Detail
+											icon={<UserRound size={14} />}
+											text={`${car.owner} Owner`}
+										/>
+										<Detail icon={<Cog size={14} />} text={car.transmission} />
+										<Detail
+											icon={<Navigation size={14} />}
+											text={`${car.kmDriven} Km`}
+										/>
+										<Detail
+											icon={<Calendar size={14} />}
+											text={String(car.year)}
+										/>
+										<Detail icon={<MapPin size={14} />} text={car.location} />
+										<Detail
+											icon={<FileDigit size={14} />}
+											text={String(car.registrationNo)}
+										/>
+										<Detail
+											icon={<ShieldCheck size={14} />}
+											text={`Insurance ${car.insurance}`}
+										/>
+										{car.features?.map((feature) => (
+											<Detail
+												key={feature}
+												icon={<CheckCheck size={14} />}
+												text={feature}
+											/>
+										))}
+									</div>
+									<p className="text-xl md:text-3xl font-bold text-primary mt-4">
+										₹ {car.price}
+									</p>
+								</div>
+							</DrawerDescription>
+						</DrawerHeader>
+
+						<DrawerFooter>
+							<Button>Book Now</Button>
+							<DrawerClose asChild>
+								<Button variant="outline">Cancel</Button>
+							</DrawerClose>
+						</DrawerFooter>
+					</div>
+				</DrawerContent>
+			</Drawer>
+
+			{/* Full-screen Media Viewer Drawer */}
+			<Drawer open={mediaViewerOpen} onOpenChange={setMediaViewerOpen}>
+				<DrawerContent className="bg-background p-4">
+					<div className="flex justify-center items-center h-[80vh] w-full">
+						{selectedIsVideo ? (
+							<video
+								src={selectedMedia}
+								controls
+								autoPlay
+								className="max-w-full max-h-[65dvh] rounded-lg object-contain"
+							/>
+						) : (
+							<img
+								src={selectedMedia}
+								alt="Car media"
+								className="max-w-full max-h-[65dvh] rounded-lg object-contain"
+							/>
+						)}
+					</div>
+				<DrawerFooter>
+					<Button>Book Now</Button>
+					<DrawerClose asChild onClick={() => setMediaViewerOpen(false)}>
+						<Button variant="outline">Cancel</Button>
+					</DrawerClose>
+				</DrawerFooter>
+				</DrawerContent>
+			</Drawer>
+		</>
 	);
 }
+
+// DRY UI Component for a Detail Item
+const Detail = ({ icon, text }: { icon: React.ReactNode; text: string }) => (
+	<span className="flex items-center gap-2">
+		{icon} {text}
+	</span>
+);

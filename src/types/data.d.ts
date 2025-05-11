@@ -40,6 +40,7 @@ export interface ICar {
 	rto?: string;
 
 	description: string;
+	thumbnail: string;
 	media: string[];
 
 	features?: string[];
