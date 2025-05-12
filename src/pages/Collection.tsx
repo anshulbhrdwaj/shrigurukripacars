@@ -8,6 +8,7 @@ import { useFilteredCars } from "@/hooks/useFilteredCars";
 
 const Collection = () => {
 	const cars = useFilteredCars();
+	
 	return (
 		<section
 			className={cn(
@@ -15,10 +16,10 @@ const Collection = () => {
 				"h-[85%] sm:flex-row py-[2.6dvh] gap-10 sm:gap-8 xl:gap-12 relative sm:pt-12"
 			)}
 		>
-			<FiltersSidebar cars={cars}/>
+			<FiltersSidebar cars={cars} />
 			<div className="flex flex-col items-center justify-start w-full h-full gap-4 sm:gap-6 xl:gap-8 ">
 				<SearchAndSortBar />
-				<CarsGrid cars={cars}/>
+				<CarsGrid cars={cars} />
 			</div>
 		</section>
 	);
