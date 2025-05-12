@@ -4,9 +4,15 @@ import { useState, ReactNode, SetStateAction, Dispatch } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { menuSlide, scale, slide } from "@/lib/Header/anim";
 import { IHamburgerProps, INavLinkProps } from "@/types";
+import { useDispatch } from "react-redux";
+import { setTheme } from "@/redux/slices/themeSlice";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 const Header = () => {
 	const [isActive, setIsActive] = useState<boolean>(false);
+	const dispatch = useDispatch();
+	const theme = useSelector((state: RootState) => state.theme.mode);
 	return (
 		<header className="w-full h-[5rem] lg:h-[6rem] items-center justify-around p-width grid grid-cols-3 border-b border-foreground/50 text-nowrap">
 			<nav className="hidden sm:flex items-center justify-start text-lg">
@@ -18,8 +24,8 @@ const Header = () => {
 					))}
 				</ul>
 			</nav>
-			<div className="flex items-center col-span-2 sm:col-span-1 justisfy-self-start justify-center">
-				<h1 className="text-2xl font-bold">Shri Guru Kripa Cars</h1>
+			<div className="flex items-center col-span-2 sm:col-span-1 justisfy-self-start justify-center" onClick={() => dispatch(setTheme(theme === "dark" ? "light" : "dark"))}>
+				<h1 className="text-2xl font-bold pointer-events-none">Shri Guru Kripa Cars</h1>
 			</div>
 			<Link
 				to="/contact-us"
