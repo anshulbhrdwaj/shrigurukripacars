@@ -7,7 +7,7 @@ import SortBy from './SortBy';
 const SearchAndSortBar = () => {
 	const dispatch = useDispatch();
 	return (
-		<div className="w-[70%] md:w-full h-16 rounded-3xl max-sm:absolute max-sm:top-4 max-sm:right-4 flex justify-between items-center gap-8">
+		<div className="w-[70%] md:w-full min-h-16 rounded-3xl max-sm:absolute max-sm:top-4 max-sm:right-4 flex justify-between items-center gap-8">
 			<div className="w-full md:w-6/10 lg:w-5/10 xl:w-3/10 h-full relative">
 				<Input
 					placeholder="Search"

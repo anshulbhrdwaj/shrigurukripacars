@@ -127,7 +127,7 @@ const FiltersSidebar = ({ cars }: { cars: ICar[] }) => {
 
 	return (
 		<Sidebar open={open} setOpen={setOpen}>
-			<SidebarBody className="bg-foreground/95 text-background rounded-lg gap-10 z-50">
+			<SidebarBody className="bg-foreground/95 text-background rounded-lg gap-10 z-[60] h-[86.5dvh] sm:h-full">
 				<div className="flex flex-1 flex-col overflow-auto">
 					{open ? <Logo open /> : <LogoIcon />}
 

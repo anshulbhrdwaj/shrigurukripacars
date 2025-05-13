@@ -13,7 +13,7 @@ const Collection = () => {
 		<section
 			className={cn(
 				section,
-				" sm:flex-row gap-10 sm:gap-8 xl:gap-12 relative "
+				" sm:flex-row gap-10 sm:gap-8 xl:gap-12 relative h-[86.5dvh] "
 			)}
 		>
 			<FiltersSidebar cars={cars} />

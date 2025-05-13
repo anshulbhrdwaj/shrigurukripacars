@@ -5,7 +5,7 @@ import CarDetails from "./CarDetails";
 
 const CarsGrid = ({ cars }: { cars: ICar[] }) => {
 	return (
-		<div className="w-full flex-1 rounded-3xl overflow-hidden md:overflow-y-scroll grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-6 sm:gap-8 p-0">
+		<div className="w-full rounded-3xl overflow-x-hidden overflow-y-scroll grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-6 sm:gap-8 p-0">
 			{cars.map((car) => (
 				<Card
 					key={car.id}
