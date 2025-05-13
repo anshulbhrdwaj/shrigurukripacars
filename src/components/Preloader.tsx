@@ -53,7 +53,7 @@ const Preloader = () => {
 							transition={{ duration: 1 }}
 							className="text-center"
 						>
-							Shree Gurukripa Cars
+							Shri Gurukripa Cars
 						</motion.h1>
 					)}
 				</motion.div>
