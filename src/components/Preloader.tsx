@@ -103,7 +103,7 @@ export default function PageWithPreloader({
 const Loading = () => {
 	return (
 		<div className="fixed inset-0 z-40 flex items-center justify-center bg-background font-recoleta text-7xl md:text-8xl text-muted-foreground">
-			<h1 className="text-center animate-pulse">Shree Gurukripa Cars</h1>
+			<h1 className="text-center animate-pulse">Shri Gurukripa Cars</h1>
 		</div>
 	);
 };

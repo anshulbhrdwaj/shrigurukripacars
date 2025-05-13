@@ -1,5 +1,5 @@
 export const section =
-	"flex flex-col gap-12 sm:gap-16 xl:gap-24 min-h-[60vh] w-full p-width content-auto";
+	"flex flex-col gap-12 sm:gap-16 xl:gap-24 min-h-[60vh] w-full px-[15px] py-[30px] lg:px-[20px] lg:py-[50px] content-auto h-[86.5%]";
 
 export const primaryBtn =
 	"w-full sm:w-[22vw] lg:w-[25vw] 2xl:w-[28vw] flex items-center justify-center rounded-[1.25rem] md:rounded-[4rem]";
@@ -14,4 +14,4 @@ export const heading2 =
 	"2xl:text-[14rem] xl:text-[10rem] sm:text-[6.6rem] text-[3rem] text-center sm:text-start text-nowrap sm:text-wrap 2xl:leading-[14rem] xl:leading-[12rem] sm:leading-[8rem] leading-[4rem] font-bold p-0 m-0";
   
 export const heading3 =
-	"2xl:text-[12rem] xl:text-[9rem] lg:text-[6.4rem] sm:text-[4.8rem] text-[2rem] text-center sm:text-start text-nowrap 2xl:leading-[14rem] xl:leading-[12rem] sm:leading-[8rem] leading-[4rem] font-bold p-0 m-0";
+	"2xl:text-[12rem] xl:text-[9rem] lg:text-[6.4rem] sm:text-[4.8rem] text-[2rem] text-center text-nowrap 2xl:leading-[14rem] xl:leading-[12rem] sm:leading-[8rem] leading-[4rem] font-bold p-0 m-0";

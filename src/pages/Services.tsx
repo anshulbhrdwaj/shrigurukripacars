@@ -353,7 +353,7 @@ const Services = () => {
   const navigateTo = useNavigate();
 	return (
 		<section
-			className={cn(section, "gap-4 sm:gap-4 xl:gap-4 py-[2.1dvw] h-[83%]")}
+			className={cn(section, "gap-4 sm:gap-4 xl:gap-4")}
 		>
 			<BentoGrid className="w-full h-full">
 				{items.map((item, i) => (

@@ -14,7 +14,7 @@ const Header = () => {
 	const dispatch = useDispatch();
 	const theme = useSelector((state: RootState) => state.theme.mode);
 	return (
-		<header className="w-full h-[5rem] lg:h-[6rem] items-center justify-around p-width grid grid-cols-3 border-b border-foreground/50 text-nowrap">
+		<header className="w-full h-[5rem] lg:h-[6rem] items-center justify-around px-[15px] py-[10px] lg:px-[20px] lg:py-[10px] grid grid-cols-3 border-b border-foreground/50 text-nowrap">
 			<nav className="hidden sm:flex items-center justify-start text-lg">
 				<ul className="hidden xl:flex items-center justify-center gap-8">
 					{navbarItems.map((item) => (

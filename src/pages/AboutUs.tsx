@@ -6,8 +6,8 @@ import { Link } from "react-router";
 
 const AboutUs = () => {
 	return (
-		<section className={cn(section, "gap-4 sm:gap-4 xl:gap-4 py-[2.1dvw] h-[83%]")}>
-			<div className=" w-[95vw] h-full relative rounded-[2rem] md:rounded-[4rem] grainy bg-foreground p-1 gap-8 lg:gap-8 xl:p-2 flex flex-col justify-between">
+		<section className={cn(section, "gap-4 sm:gap-4 xl:gap-4")}>
+			<div className=" w-full h-full relative rounded-[2rem] md:rounded-[4rem] grainy bg-foreground p-1 gap-8 lg:gap-8 xl:p-2 flex flex-col justify-between">
 				<div className="bg-background rounded-[2rem] md:rounded-[4rem] min-h-[50vh] sm:h-full w-full "></div>
 
 				<div className="rounded-[2rem] md:rounded-[4rem] h-full w-full flex flex-col justify-around gap-10 px-14 pb-12">

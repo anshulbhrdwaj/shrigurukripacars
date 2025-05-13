@@ -20,7 +20,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const Home = () => {
 	return (
-		<main className="flex flex-col space-y-32 overflow-x-hidden">
+		<main className="flex flex-col md:space-y-8 overflow-x-hidden">
 			<Hero />
 			<Explore />
 			<Gallery />
@@ -39,12 +39,12 @@ const Hero = () => {
 		<section
 			className={cn(
 				section,
-				"gap-0 sm:gap-0 xl:gap-0 items-center pt-8 justify-center"
+				"gap-0 sm:gap-0 xl:gap-0 items-center justify-center"
 			)}
 		>
 			<h1 className={cn(heading, "text-nowrap")}>CLASSIC CARS</h1>
 
-			<Card className=" w-[90vw] xl:w-[95vw] h-[60vh] relative rounded-[2rem] rounded-br-[4rem]  md:rounded-[4rem] grainy bg-foreground border-none shadow-none">
+			<Card className=" w-full h-[60vh] relative rounded-[2rem] rounded-br-[4rem]  md:rounded-[4rem] grainy bg-foreground border-none shadow-none">
 				<CardContent>
 					<Button
 						className={cn(primaryBtn, cardBtn, "h-[5dvh] sm:h-[3dvh] py-6 px-12 sm:py-3 sm:px-6 rounded-full")}
@@ -125,7 +125,7 @@ const About = () => {
 		<section className={cn(section, "")}>
 			<h1 className={cn(heading3)}>Shri Gurukripa Cars</h1>
 
-			<div className=" w-[95vw] h-full sm:h-[60vh] relative rounded-[2rem] md:rounded-[4rem] grainy bg-foreground p-8 gap-8 lg:gap-12 xl:p-16 flex flex-col justify-between sm:flex-row">
+			<div className=" w-full h-full sm:h-[60vh] relative rounded-[2rem] md:rounded-[4rem] grainy bg-foreground p-8 gap-8 lg:gap-12 xl:p-16 flex flex-col justify-between sm:flex-row">
 				<div className="bg-background rounded-[2rem] md:rounded-[4rem] h-6/10 sm:h-full w-full sm:w-6/10"></div>
 				<div className="rounded-[2rem] md:rounded-[4rem] h-full w-full sm:w-4/10 xl:w-3/10 flex flex-col justify-around">
 					<div className="flex flex-col gap-8">
@@ -167,7 +167,7 @@ const CtaSection = () => {
 		<section
 			className={cn(
 				section,
-				"bg-foreground min-h-[10vh] min-w-screen p-width py-12 "
+				"bg-foreground min-h-[10vh] w-screen "
 			)}
 		>
 			<div className={cn(heading, "font-recoleta text-background")}>

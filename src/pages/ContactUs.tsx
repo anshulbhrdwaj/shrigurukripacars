@@ -41,9 +41,9 @@ const ContactUs = () => {
   };
 	return (
 		<section
-			className={cn(section, "gap-4 sm:gap-4 xl:gap-4 py-[2.1dvw] h-[83%]")}
+			className={cn(section, "gap-4 sm:gap-4 xl:gap-4")}
 		>
-			<div className="shadow-input mx-auto w-full max-w-xl h-full rounded-none bg-foreground/10 p-4 md:rounded-2xl md:p-8 font-recoleta my-auto overflow-scroll">
+			<div className="shadow-input mx-auto w-full max-w-xl h-full bg-foreground/10 p-4 rounded-2xl md:p-8 font-recoleta my-auto overflow-scroll">
       <h2 className="text-5xl font-bold">
         Contact Us
       </h2>
