@@ -1,15 +1,13 @@
 import { useEffect } from 'react'
 import Lenis, { LenisOptions } from 'lenis'
 
-export const useLenis = (enabled: boolean = true, wrapper?: HTMLDivElement | null) => {
+export const useLenis = (enabled: boolean = true) => {
   useEffect(() => {
     if (!enabled) return;
 
     const lenis = new Lenis({
       smooth: true,
-      lerp: 0.06,
-      wrapper: wrapper || window, // Use custom wrapper or default to window
-      content: wrapper ? wrapper.children[0] as HTMLDivElement : undefined,
+      lerp: 0.08,
     } as LenisOptions)
 
     const raf = (time: number) => {
@@ -22,5 +20,5 @@ export const useLenis = (enabled: boolean = true, wrapper?: HTMLDivElement | nul
     return () => {
       lenis.destroy()
     }
-  }, [enabled, wrapper])
+  }, [enabled])
 }

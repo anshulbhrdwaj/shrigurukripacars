@@ -2,17 +2,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Cog, Fuel, Navigation, UserRound } from "lucide-react";
 import { ICar } from "@/types";
 import CarDetails from "./CarDetails";
-import { useRef } from "react";
-import { useLenis } from "@/hooks/useLenis";
 
 const CarsGrid = ({ cars }: { cars: ICar[] }) => {
-	const scrollRef = useRef<HTMLDivElement>(null);
-	useLenis(true, scrollRef.current);
-	
 	return (
 		<div
-			ref={scrollRef}
-			className="w-full rounded-3xl overflow-hidden grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-6 sm:gap-8 p-0"
+			className="w-full rounded-3xl overflow-x-hidden overflow-y-scroll scroll-smooth grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-6 sm:gap-8 p-0"
 		>
 			{cars.map((car) => (
 				<Card
