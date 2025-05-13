@@ -30,9 +30,9 @@ const withSuspense = (Page: React.ComponentType) => ({
 
 const router = createBrowserRouter([
   {
-    Component: App,
+    ...withPreloader(App),
     children: [
-      { index: true, ...withPreloader(Home) },
+      { index: true, ...withSuspense(Home) },
       { path: "collection", ...withSuspense(Collection) },
       { path: "services", ...withSuspense(Services) },
       { path: "sell-your-car", ...withSuspense(SellYourCar) },
