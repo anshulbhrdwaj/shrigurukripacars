@@ -17,8 +17,10 @@ import {
 } from "@/lib/classes";
 import AnimatedTestimonials from "@/components/ui/animated-testimonials";
 import { Card, CardContent } from "@/components/ui/card";
+import { useLenis } from "@/hooks/useLenis";
 
 const Home = () => {
+	useLenis();
 	return (
 		<main className="flex flex-col md:space-y-8 overflow-x-hidden">
 			<Hero />
