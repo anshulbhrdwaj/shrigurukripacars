@@ -9,7 +9,7 @@ const CarsGrid = ({ cars }: { cars: ICar[] }) => {
 			{cars.map((car) => (
 				<Card
 					key={car.id}
-					className=" bg-foreground h-[60dvh] md:h-[55dvh] rounded-3xl min-w-[24dvw] border-none relative font-recoleta p-4 pb-3"
+					className=" bg-foreground h-[50dvh] rounded-3xl min-w-[24dvw] border-none relative font-recoleta p-4 pb-3"
 				>
 					<CardContent className="h-full flex flex-col p-0">
 						<img

@@ -35,6 +35,7 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "./ui/carousel";
+import { Link } from "react-router";
 
 export default function CarDetails({ car }: { car: ICar }) {
 	const [mediaViewerOpen, setMediaViewerOpen] = useState(false);
@@ -137,14 +138,15 @@ export default function CarDetails({ car }: { car: ICar }) {
 											/>
 										))}
 									</div>
-									<p className="text-xl md:text-3xl font-bold text-primary mt-4">
-										₹ {car.price}
-									</p>
+									<div className="text-xl md:text-3xl font-bold text-primary mt-4 flex justify-between items-end">
+										<span>₹ {car.price}</span>
+										<Link to={`/emi-calculator/${car.id}`} className="text-sm">Calculate Emi &rarr;</Link>
+									</div>
 								</div>
 							</DrawerDescription>
 						</DrawerHeader>
 
-						<DrawerFooter>
+						<DrawerFooter className="">
 							<Button>Book Now</Button>
 							<DrawerClose asChild>
 								<Button variant="outline">Cancel</Button>
@@ -173,12 +175,6 @@ export default function CarDetails({ car }: { car: ICar }) {
 							/>
 						)}
 					</div>
-				<DrawerFooter>
-					<Button>Book Now</Button>
-					<DrawerClose asChild onClick={() => setMediaViewerOpen(false)}>
-						<Button variant="outline">Cancel</Button>
-					</DrawerClose>
-				</DrawerFooter>
 				</DrawerContent>
 			</Drawer>
 		</>

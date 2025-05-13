@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       { path: "collection", ...withPreloader(Collection) },
       { path: "services", ...withPreloader(Services) },
       { path: "sell-your-car", ...withPreloader(SellYourCar) },
-      { path: "emi-calculator", ...withPreloader(Finance) },
+      { path: "emi-calculator/:carId?", ...withPreloader(Finance) },
       { path: "about-us", ...withPreloader(AboutUs) },
       { path: "contact-us", ...withPreloader(ContactUs) },
     ],

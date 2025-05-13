@@ -199,7 +199,7 @@
 /* Default styling */
 @layer base {
 	* {
-		@apply border-border outline-ring/50 transition-all duration-1000;
+		@apply border-border outline-ring/50 transition-all duration-500;
 	}
 	body {
 		@apply bg-background text-foreground font-georgia;
