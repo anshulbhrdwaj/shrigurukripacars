@@ -17,47 +17,18 @@ const MotionCountUp = ({ endValue }: { endValue: number }) => (
 );
 
 const Preloader = () => {
-	const [phase, setPhase] = useState<"counting" | "logo" | "done">("counting");
-
-	useEffect(() => {
-		const timer = setTimeout(() => setPhase("logo"), 4000);
-		const logoTimer = setTimeout(() => {
-			setPhase("done");
-		}, 5000);
-
-		return () => {
-			clearTimeout(timer);
-			clearTimeout(logoTimer);
-		};
-	}, []);
-
 	return (
 		<AnimatePresence>
-			{phase !== "done" && (
-				<motion.div
-					key="preloader"
-					initial={{ opacity: 1 }}
-					animate={{ opacity: 1 }}
-					exit={{ opacity: 0 }}
-					transition={{ duration: 1 }}
-					className="fixed inset-0 z-50 flex items-center justify-center bg-background font-recoleta text-7xl md:text-8xl text-muted-foreground"
-				>
-					{phase === "counting" ? (
-						<MotionCountUp key="count" endValue={99} />
-					) : (
-						<motion.h1
-							key="logo"
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							exit={{ opacity: 0 }}
-							transition={{ duration: 1 }}
-							className="text-center"
-						>
-							Shri Gurukripa Cars
-						</motion.h1>
-					)}
-				</motion.div>
-			)}
+			<motion.div
+				key="preloader"
+				initial={{ opacity: 1 }}
+				animate={{ opacity: 1 }}
+				exit={{ opacity: 0 }}
+				transition={{ duration: 1 }}
+				className="fixed inset-0 z-50 flex items-center justify-center bg-background font-recoleta text-7xl md:text-8xl text-muted-foreground"
+			>
+				<MotionCountUp key="count" endValue={99} />
+			</motion.div>
 		</AnimatePresence>
 	);
 };
@@ -72,7 +43,7 @@ export default function PageWithPreloader({
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			setShowPreloader(false);
-		}, 5000); // Sync with Preloader duration
+		}, 4500); // Sync with Preloader duration
 
 		return () => clearTimeout(timer);
 	}, []);
@@ -100,7 +71,7 @@ export default function PageWithPreloader({
 	);
 }
 
-const Loading = () => {
+export const Loading = () => {
 	return (
 		<div className="fixed inset-0 z-40 flex items-center justify-center bg-background font-recoleta text-7xl md:text-8xl text-muted-foreground">
 			<h1 className="text-center animate-pulse">Shri Gurukripa Cars</h1>
